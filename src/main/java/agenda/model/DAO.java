@@ -50,7 +50,7 @@ public class DAO {
 
 			conn.close();
 		} catch (Exception e) {
-			throw new DataObjectAcessException("Error trying to insert new contact: " + e.getMessage());
+			throw new DataObjectAcessException("Error trying to insert new contact:  " + e.getMessage());
 		}
 
 	}

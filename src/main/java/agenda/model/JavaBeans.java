@@ -2,7 +2,7 @@ package agenda.model;
 
 public class JavaBeans {
 
-	private Integer idcontato;
+	private String idcontato;
 	private String nome;
 	private String fone;
 	private String email;
@@ -11,7 +11,7 @@ public class JavaBeans {
 		super();
 	}
 
-	public JavaBeans(Integer idcontato, String nome, String fone, String email) {
+	public JavaBeans(String idcontato, String nome, String fone, String email) {
 		super();
 		this.idcontato = idcontato;
 		this.nome = nome;
@@ -19,11 +19,11 @@ public class JavaBeans {
 		this.email = email;
 	}
 
-	public Integer getIdcontato() {
+	public String getIdcontato() {
 		return idcontato;
 	}
 
-	public void setIdcontato(Integer idcontato) {
+	public void setIdcontato(String idcontato) {
 		this.idcontato = idcontato;
 	}
 

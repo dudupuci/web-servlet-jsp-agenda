@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import agenda.model.exceptions.DataObjectAcessException;
+
 public class DAO {
 
 	// Connection model, parameters
@@ -26,8 +28,8 @@ public class DAO {
 			return conn;
 
 		} catch (Exception e) {
-			System.out.println("Error: " + e.getMessage());
-			return null;
+			throw new DataObjectAcessException("Error trying to connect database: " + e.getMessage());
+
 		}
 
 	}
@@ -47,7 +49,7 @@ public class DAO {
 
 			conn.close();
 		} catch (Exception e) {
-			System.out.println("Error: " + e.getMessage());
+			throw new DataObjectAcessException("Error trying to insert new contact: " + e.getMessage());
 		}
 
 	}
@@ -62,7 +64,7 @@ public class DAO {
 			// result set executa a query, executa o comando select * from.
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				Integer idcontato = rs.getInt(1);
+				String idcontato = rs.getString(1);
 				String nome = rs.getString(2);
 				String fone = rs.getString(3);
 				String email = rs.getString(4);
@@ -73,8 +75,33 @@ public class DAO {
 			return contatos;
 
 		} catch (Exception e) {
-			System.out.println("Error: " + e.getMessage());
-			return null;
+			throw new DataObjectAcessException("Error trying to show contacts: " + e.getMessage());
+
+		}
+
+	}
+
+	public void selecionarContato(JavaBeans contato) {
+
+		String read = "select * from contatos where idcontato = ?";
+		try {
+			Connection conn = connect();
+			PreparedStatement ps = conn.prepareStatement(read);
+			ps.setString(1, contato.getIdcontato());
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				// setar variavéis javabeans
+				contato.setIdcontato(rs.getString(1));
+				contato.setNome(rs.getString(2));
+				contato.setFone(rs.getString(3));
+				contato.setEmail(rs.getString(4));
+			}
+			conn.close();
+
+		} catch (Exception e) {
+			throw new DataObjectAcessException("Error trying to select contact: " + e.getMessage());
+
 		}
 
 	}

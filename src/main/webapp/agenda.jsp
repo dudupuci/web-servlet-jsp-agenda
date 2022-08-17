@@ -43,12 +43,14 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("contato
 			<%
 			for (int i = 0; i < list.size(); i++) {
 			%>
+
+
 			<tr>
 				<td><%=list.get(i).getIdcontato()%></td>
 				<td><%=list.get(i).getNome()%></td>
 				<td><%=list.get(i).getFone()%></td>
 				<td><%=list.get(i).getEmail()%></td>
-				<td><a href="select?idcontato= <%=list.get(i).getIdcontato()%>">Editar</a>
+				<td><a href="select?idcontato= <%=list.get(i).getIdcontato()%>">Editar</a></td>
 				<td><a
 					href="javascript: confirmation(<%=list.get(i).getIdcontato()%>)">Excluir</a></td>
 			</tr>
@@ -56,8 +58,9 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("contato
 			}
 			%>
 
+			<script src="scripts/confirmator.js"></script>
 		</tbody>
-		<script src="scripts/confirmator.js"></script>
+
 
 	</table>
 

@@ -40,9 +40,9 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		out.println("Acessado");
 
 		String action = request.getServletPath();
+		System.out.println(action);
 
 		if (action.equals("/main")) {
 			contatos(request, response);
@@ -55,9 +55,12 @@ public class Controller extends HttpServlet {
 
 		} else if (action.equals("/update")) {
 			editarContato(request, response);
+		} else if (action.equals("/delete")) {
+			removerContato(request, response);
 		} else {
 			response.sendRedirect("index.html");
 		}
+		out.close();
 
 	}
 
@@ -134,6 +137,18 @@ public class Controller extends HttpServlet {
 		dao.updateContato(contato);
 
 		// redirecionar para o documento agenda.jsp
+		response.sendRedirect("main");
+
+	}
+
+	protected void removerContato(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String idcontato = request.getParameter("idcontato");
+
+		contato.setIdcontato(idcontato);
+		dao.deletarContato(contato);
+
 		response.sendRedirect("main");
 
 	}

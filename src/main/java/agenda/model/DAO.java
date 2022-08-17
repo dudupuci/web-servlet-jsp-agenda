@@ -41,6 +41,7 @@ public class DAO {
 			// preparar statement
 			PreparedStatement ps = conn.prepareStatement(create);
 			// parametrizando os campos "?" com os seus respectivos valores
+
 			ps.setString(1, contato.getNome());
 			ps.setString(2, contato.getFone());
 			ps.setString(3, contato.getEmail());
@@ -120,6 +121,21 @@ public class DAO {
 			conn.close();
 		} catch (Exception e) {
 			throw new DataObjectAcessException("Error trying to update contact: " + e.getMessage());
+		}
+	}
+
+	public void deletarContato(JavaBeans contato) {
+		String delete = "delete from contatos where idcontato=?";
+
+		try {
+			Connection conn = connect();
+			PreparedStatement ps = conn.prepareStatement(delete);
+			ps.setString(1, contato.getIdcontato());
+			ps.executeUpdate();
+			conn.close();
+
+		} catch (Exception e) {
+			throw new DataObjectAcessException("Error trying to delete contact: " + e.getMessage());
 		}
 	}
 

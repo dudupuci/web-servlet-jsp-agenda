@@ -106,4 +106,21 @@ public class DAO {
 
 	}
 
+	public void updateContato(JavaBeans contato) {
+		String create = "update contatos set nome=?,fone=?,email=? where idcontato=?";
+
+		try {
+			Connection conn = connect();
+			PreparedStatement ps = conn.prepareStatement(create);
+			ps.setString(1, contato.getNome());
+			ps.setString(2, contato.getFone());
+			ps.setString(3, contato.getEmail());
+			ps.setString(4, contato.getIdcontato());
+			ps.executeUpdate();
+			conn.close();
+		} catch (Exception e) {
+			throw new DataObjectAcessException("Error trying to update contact: " + e.getMessage());
+		}
+	}
+
 }

@@ -17,7 +17,7 @@ import agenda.model.JavaBeans;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select" })
+@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select", "/update", "/delete" })
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -53,6 +53,8 @@ public class Controller extends HttpServlet {
 		} else if (action.equals("/select")) {
 			listarContato(request, response);
 
+		} else if (action.equals("/update")) {
+			editarContato(request, response);
 		} else {
 			response.sendRedirect("index.html");
 		}
@@ -111,12 +113,29 @@ public class Controller extends HttpServlet {
 		// executar selecionarContato
 		dao.selecionarContato(contato);
 
-		// teste
-		/*
-		 * System.out.println(contato.getIdcontato());
-		 * System.out.println(contato.getNome()); System.out.println(contato.getFone());
-		 * System.out.println(contato.getEmail());
-		 */
+		request.setAttribute("idcontato", contato.getIdcontato());
+		request.setAttribute("nome", contato.getNome());
+		request.setAttribute("fone", contato.getFone());
+		request.setAttribute("email", contato.getEmail());
+
+		// encaminhar ao editarcontato.jsp
+		RequestDispatcher rd = request.getRequestDispatcher("editarcontato.jsp");
+		rd.forward(request, response);
+	}
+
+	protected void editarContato(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		contato.setIdcontato(request.getParameter("idcontato"));
+		contato.setNome(request.getParameter("nome"));
+		contato.setFone(request.getParameter("fone"));
+		contato.setEmail(request.getParameter("email"));
+
+		dao.updateContato(contato);
+
+		// redirecionar para o documento agenda.jsp
+		response.sendRedirect("main");
+
 	}
 
 }

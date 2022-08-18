@@ -5,6 +5,7 @@
 <%@ page import="java.util.ArrayList"%>
 
 <%
+@SuppressWarnings("unchecked")
 ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("contatos");
 %>
 <%--for (int i = 0; i < list.size(); i++) {

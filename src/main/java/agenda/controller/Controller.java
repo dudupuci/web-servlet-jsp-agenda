@@ -3,7 +3,6 @@ package agenda.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -56,7 +55,7 @@ public class Controller extends HttpServlet {
 			contatos(request, response);
 
 		} else if (action.equals("/insert")) {
-			novoContato(request, response);
+			adicionarContato(request, response);
 
 		} else if (action.equals("/select")) {
 			listarContato(request, response);
@@ -97,7 +96,7 @@ public class Controller extends HttpServlet {
 
 	}
 
-	protected void novoContato(HttpServletRequest request, HttpServletResponse response)
+	protected void adicionarContato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		contato.setNome(request.getParameter("nome"));
@@ -117,11 +116,7 @@ public class Controller extends HttpServlet {
 			throws ServletException, IOException {
 
 		// Recebendo o id do contato que será editado
-		String idcontato = request.getParameter("idcontato");
-		System.out.println(idcontato);
-
-		// setar variavel JavaBeans
-		contato.setIdcontato(idcontato);
+		contato.setIdcontato(request.getParameter("idcontato"));
 
 		// executar selecionarContato
 		dao.selecionarContato(contato);
@@ -154,9 +149,7 @@ public class Controller extends HttpServlet {
 	protected void removerContato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String idcontato = request.getParameter("idcontato");
-
-		contato.setIdcontato(idcontato);
+		contato.setIdcontato(request.getParameter("idcontato"));
 		dao.deletarContato(contato);
 
 		response.sendRedirect("main");

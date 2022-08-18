@@ -108,11 +108,11 @@ public class DAO {
 	}
 
 	public void updateContato(JavaBeans contato) {
-		String create = "update contatos set nome=?,fone=?,email=? where idcontato=?";
+		String update = "update contatos set nome=?,fone=?,email=? where idcontato=?";
 
 		try {
 			Connection conn = connect();
-			PreparedStatement ps = conn.prepareStatement(create);
+			PreparedStatement ps = conn.prepareStatement(update);
 			ps.setString(1, contato.getNome());
 			ps.setString(2, contato.getFone());
 			ps.setString(3, contato.getEmail());

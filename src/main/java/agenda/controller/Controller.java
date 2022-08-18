@@ -3,6 +3,7 @@ package agenda.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,13 +12,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+
 import agenda.model.DAO;
 import agenda.model.JavaBeans;
+import agenda.model.exceptions.DataObjectAcessException;
 
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select", "/update", "/delete" })
+@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select", "/update", "/delete", "/report" })
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -57,6 +65,8 @@ public class Controller extends HttpServlet {
 			editarContato(request, response);
 		} else if (action.equals("/delete")) {
 			removerContato(request, response);
+		} else if (action.equals("/report")) {
+			gerarRelatorio(request, response);
 		} else {
 			response.sendRedirect("index.html");
 		}
@@ -150,6 +160,49 @@ public class Controller extends HttpServlet {
 		dao.deletarContato(contato);
 
 		response.sendRedirect("main");
+
+	}
+
+	protected void gerarRelatorio(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		Document documento = new Document();
+		try {
+			// precisa ser chamado para resetar a resposta e não gerar exceção.
+			response.reset();
+			// tipo de conteudo
+			response.setContentType("apllication/pdf");
+			// nome do documento
+			response.addHeader("Content-Disposition", "inline; filename=" + "contatos.pdf");
+			// criando documento pdf
+			PdfWriter.getInstance(documento, response.getOutputStream());
+			// abrir o PDF para gerar conteudo
+			documento.open();
+			documento.add(new Paragraph("Lista de contatos"));
+			documento.add(new Paragraph(" "));
+			// criar uma tabela e o numero 3 indica que a tabela terá 3 colunas
+			PdfPTable table = new PdfPTable(3);
+			PdfPCell col1 = new PdfPCell(new Paragraph("Nome"));
+			PdfPCell col2 = new PdfPCell(new Paragraph("Fone"));
+			PdfPCell col3 = new PdfPCell(new Paragraph("Email"));
+			table.addCell(col1);
+			table.addCell(col2);
+			table.addCell(col3);
+
+			// Pupular a tabela com os contatos Javabeans
+			ArrayList<JavaBeans> list = dao.mostrarContatos();
+			for (int i = 0; i < list.size(); i++) {
+				table.addCell(list.get(i).getNome());
+				table.addCell(list.get(i).getFone());
+				table.addCell(list.get(i).getEmail());
+			}
+			documento.add(table);
+			documento.close();
+
+		} catch (Exception e) {
+			throw new DataObjectAcessException("Error trying to generate relatory: " + e.getMessage());
+
+		}
 
 	}
 

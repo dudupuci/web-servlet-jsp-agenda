@@ -8,16 +8,32 @@ import java.util.ArrayList;
 
 import agenda.model.exceptions.DataObjectAcessException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DAO.
+ */
 public class DAO {
 
 	// Connection model, parameters
 	// Manual connection
 
+	/** The driver. */
 	private String driver = "com.mysql.cj.jdbc.Driver";
+	
+	/** The url. */
 	private String url = "jdbc:mysql://127.0.0.1:3306/dbagenda?useTimezone=true&serverTimezone=UTC";
+	
+	/** The user. */
 	private String user = "root";
+	
+	/** The password. */
 	private String password = "orp101099";
 
+	/**
+	 * Connect.
+	 *
+	 * @return the connection
+	 */
 	public Connection connect() {
 		Connection conn = null;
 
@@ -34,6 +50,11 @@ public class DAO {
 
 	}
 
+	/**
+	 * Insert contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void insertContato(JavaBeans contato) {
 		String create = "insert into contatos (nome, fone, email) values (?,?,?)";
 		try {
@@ -55,6 +76,11 @@ public class DAO {
 
 	}
 
+	/**
+	 * Mostrar contatos.
+	 *
+	 * @return the array list
+	 */
 	public ArrayList<JavaBeans> mostrarContatos() {
 		ArrayList<JavaBeans> contatos = new ArrayList<>();
 		String read = "select * from contatos order by nome";
@@ -82,6 +108,11 @@ public class DAO {
 
 	}
 
+	/**
+	 * Selecionar contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void selecionarContato(JavaBeans contato) {
 
 		String read = "select * from contatos where idcontato = ?";
@@ -107,6 +138,11 @@ public class DAO {
 
 	}
 
+	/**
+	 * Update contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void updateContato(JavaBeans contato) {
 		String update = "update contatos set nome=?,fone=?,email=? where idcontato=?";
 
@@ -124,6 +160,11 @@ public class DAO {
 		}
 	}
 
+	/**
+	 * Deletar contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void deletarContato(JavaBeans contato) {
 		String delete = "delete from contatos where idcontato=?";
 
@@ -140,3 +181,4 @@ public class DAO {
 	}
 
 }
+

@@ -21,18 +21,26 @@ import agenda.model.DAO;
 import agenda.model.JavaBeans;
 import agenda.model.exceptions.DataObjectAcessException;
 
+// TODO: Auto-generated Javadoc
 /**
- * Servlet implementation class Controller
+ * Servlet implementation class Controller.
  */
 @WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select", "/update", "/delete", "/report" })
 public class Controller extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** The dao. */
 	// Data acess object created
 	private DAO dao = new DAO();
+	
+	/** The contato. */
 	JavaBeans contato = new JavaBeans();
 
 	/**
+	 * Instantiates a new controller.
+	 *
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public Controller() {
@@ -41,6 +49,12 @@ public class Controller extends HttpServlet {
 	}
 
 	/**
+	 * Do get.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
@@ -73,6 +87,14 @@ public class Controller extends HttpServlet {
 
 	}
 
+	/**
+	 * Contatos.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	// Listar contatos
 	protected void contatos(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -96,6 +118,14 @@ public class Controller extends HttpServlet {
 
 	}
 
+	/**
+	 * Adicionar contato.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	protected void adicionarContato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -112,6 +142,14 @@ public class Controller extends HttpServlet {
 
 	// Editar contato
 
+	/**
+	 * Listar contato.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	protected void listarContato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -131,6 +169,14 @@ public class Controller extends HttpServlet {
 		rd.forward(request, response);
 	}
 
+	/**
+	 * Editar contato.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	protected void editarContato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -146,6 +192,14 @@ public class Controller extends HttpServlet {
 
 	}
 
+	/**
+	 * Remover contato.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	protected void removerContato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -156,6 +210,14 @@ public class Controller extends HttpServlet {
 
 	}
 
+	/**
+	 * Gerar relatorio.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	protected void gerarRelatorio(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -200,3 +262,4 @@ public class Controller extends HttpServlet {
 	}
 
 }
+

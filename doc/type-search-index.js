@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"agenda.controller","l":"Controller"},{"p":"agenda.model","l":"DAO"},{"p":"agenda.model.exceptions","l":"DataObjectAcessException"},{"p":"agenda.model","l":"JavaBeans"}]

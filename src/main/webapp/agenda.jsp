@@ -24,10 +24,12 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("contato
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<h1>Agenda de contatos</h1>
-	<a href="novocontato.html">Novo contato</a>
-	<a href="report">Relatório</a>
-	<table id="tabela">
+	<h1 class="page-title">Agenda de contatos</h1>
+	<div class="bottons">
+		<a href="novocontato.html" id="new-contact">Novo contato</a> <a
+			href="report" id="relatory">Relatório</a>
+	</div>
+	<table id="table-contacts">
 
 		<thead>
 			<tr>
@@ -35,7 +37,8 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("contato
 				<th>Nome</th>
 				<th>Fone</th>
 				<th>Email</th>
-				<th>Opções</th>
+				<th>Editar</th>
+				<th>Excluir</th>
 			</tr>
 
 
@@ -53,9 +56,11 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("contato
 				<td><%=list.get(i).getNome()%></td>
 				<td><%=list.get(i).getFone()%></td>
 				<td><%=list.get(i).getEmail()%></td>
-				<td><a href="select?idcontato= <%=list.get(i).getIdcontato()%>">Editar</a></td>
+				<td><a href="select?idcontato= <%=list.get(i).getIdcontato()%>"
+					style="color: white" id="edit-botton">Editar</a></td>
 				<td><a
-					href="javascript: confirmation(<%=list.get(i).getIdcontato()%>)">Excluir</a></td>
+					href="javascript: confirmation(<%=list.get(i).getIdcontato()%>)"
+					style="color: white" id="delete-botton">Excluir</a></td>
 			</tr>
 			<%
 			}

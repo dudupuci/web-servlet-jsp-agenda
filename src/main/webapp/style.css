@@ -3,6 +3,10 @@
 @import
 	url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap')
 	;
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Inter:wght@200&display=swap')
+	;
 /* index.html start */
 body {
 	background: rgb(2, 0, 36);
@@ -41,7 +45,57 @@ body {
 	width: 250px;
 }
 /* index.html ends */
+
 /* agenda.jsp start */
-h1 {
-	color: red;
+.page-title {
+	text-align: center;
+	font-family: 'Comfortaa';
+	font-weight: bold;
+}
+
+#table-contacts {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	text-align: center;
+	padding: 10px;
+	background-color: white;
+	border-radius: 6px;
+	font-family: 'Inter', 'Helvetica', sans-serif;
+	color: white;
+}
+
+#table-contacts td {
+	margin: 5px;
+	padding: 5px;
+	background-color: rgb(170, 170, 170);
+}
+
+#table-contacts th {
+	color: black;
+	font-weight: bold;
+}
+
+#table-contacts td:nth-child(2n+1) {
+	background-color: grey;
+}
+
+.bottons {
+	text-align: center;
+	margin: auto;
+}
+
+.bottons a {
+	cursor: pointer;
+	font-family: 'Comfortaa';
+	color: white;
+	text-decoration: underline;
+	font-family: 'Comfortaa';
+}
+
+#edit-botton:hover {
+	color:yellow!important;
+}
+#delete-botton:hover {
+	color:red!important;
 }

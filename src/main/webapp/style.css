@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap')
+	;
+/* index.html start */
+body {
+	background: rgb(2, 0, 36);
+	background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%,
+		rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+}
+
+#agenda-image {
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+}
+
+.default-link {
+	text-decoration: none;
+	font-size: 18px;
+	font-family: 'Comfortaa';
+	color: white;
+	cursor: pointer;
+	border: 1px solid none;
+	border-radius: 6px;
+	background-color: rgb(190, 190, 190);
+	padding: 10px;
+	cursor: pointer;
+	transition: box-shadow 300ms ease-out;
+}
+
+.default-link:hover {
+	box-shadow: 0px 0px 3px 2px rgba(252, 189, 0, 0.84);
+}
+
+.acess-link {
+	text-align: center;
+	margin: 1px auto;
+	display: block;
+	width: 250px;
+}
+/* index.html ends */
+/* agenda.jsp start */
+h1 {
+	color: red;
+}

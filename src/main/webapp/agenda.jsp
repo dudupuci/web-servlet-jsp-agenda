@@ -21,6 +21,7 @@ ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("contato
 <head>
 <meta charset="UTF-8">
 <title>Agenda de contatos</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<h1>Agenda de contatos</h1>

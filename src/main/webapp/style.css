@@ -94,8 +94,10 @@ body {
 }
 
 #edit-botton:hover {
-	color:yellow!important;
+	color: yellow !important;
 }
+
 #delete-botton:hover {
-	color:red!important;
+	color: red !important;
 }
+/* agenda.jsp ends */

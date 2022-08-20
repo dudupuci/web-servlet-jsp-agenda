@@ -3,27 +3,86 @@
 <head>
 <meta charset="UTF-8">
 <title>Agenda de Contatos</title>
-<link rel="stylesheet" href="styles.css">
+<style>
+@import
+	url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap')
+	;
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Inter:wght@200&display=swap')
+	;
+
+body {
+	background: rgb(2, 0, 36);
+	background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%,
+		rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+}
+
+.page-title {
+	text-align: center;
+	font-family: 'Comfortaa';
+	text-align: center;
+}
+
+form {
+	margin: auto;
+	text-align: center;
+	display: grid;
+}
+
+main {
+	border: 1px solid none;
+	background-color: white;
+	width: 300px;
+	border-radius: 4px;
+	height: 250px;
+	margin: auto;
+	padding: 10px;
+	margin: auto;
+	width: 300px;
+	height: 250px;
+	-webkit-box-shadow: 18px 10px 25px 1px rgba(0, 0, 0, 0.74);
+	box-shadow: 18px 10px 25px 1px rgba(0, 0, 0, 0.74);
+}
+
+form input {
+	margin: 5px;
+}
+
+.new-button {
+	width: 150px;
+	cursor: pointer;
+	margin: auto;
+	cursor: pointer;
+}
+</style>
 </head>
 <body>
-	<h1>Criar novo contato</h1>
-	<form name="frmContato" action="insert">
+	<h1 class="page-title">Criar novo contato</h1>
+	<main>
+		<form name="frmContato" id="form-new-contact" action="insert">
 
-		<table>
-			<tr>
-			<td><input type="text" name="nome" id="nome" placeholder="Nome"></td>
-			</tr>
-			<tr>
-			<td><input type="text" name="fone" id="fone" placeholder="Fone"></td>
-			</tr>
-			<tr>
-			<td><input type="text" name="email" id="email" placeholder="Email"></td>
-			</tr>
-		</table>
-		<input type="reset" value="Resetar campos">
-		<input type="button" value="Adicionar novo contato" onclick="validation()">
+			<table>
+				<tr>
+					<td><input type="text" name="nome" id="nome"
+						placeholder="Nome"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="fone" id="fone"
+						placeholder="Fone"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="email" id="email"
+						placeholder="Email"></td>
+				</tr>
+			</table>
+			<input type="button" value="Adicionar novo contato"
+				class="new-button" onclick="validation()"> <input
+				type="reset" value="Resetar campos" class="new-button">
 
-	</form>
+
+		</form>
+	</main>
 	<script src="scripts/validator.js"></script>
 
 </body>

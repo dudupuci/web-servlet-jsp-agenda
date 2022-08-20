@@ -22,8 +22,10 @@ function validation() {
 
 
 	} else {
+
+
 		document.forms["frmContato"].submit();
-		console.log('Envio sucedido!')
+
 	}
 
 }
